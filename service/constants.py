@@ -7,6 +7,7 @@ class NotificationChannel(str, Enum):
 
 
 class Station(str, Enum):
+    BANBURY = "BAN"
     BATH_SPA = "BTH"
     BEESTON = "BEE"
     BICESTER_NORTH = "BCS"
@@ -38,6 +39,7 @@ class Station(str, Enum):
     OXFORD = "OXF"
     PETERBOROUGH = "PBO"
     READING = "RDG"
+    SOLIHULL = "SOL"
     SLOUGH = "SLO"
     STAFFORD = "STA"
     STANSTED_AIRPORT = "SSD"

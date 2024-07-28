@@ -54,9 +54,7 @@ class ChooChooDatabase(Database):
         }
 
     @profileit(template="Queried DB for report with ID {2} in {_time}")
-    def get_notification_schedule_by_id(
-        self, universe: str, notification_global_id: str
-    ):
+    def get_train_report_by_id(self, universe: str, notification_global_id: str):
         result = self.query_one(
             """
             SELECT * FROM notification_schedules
@@ -117,6 +115,91 @@ class ChooChooDatabase(Database):
                 AND NOW() < expires_at
             """,
             [universe, dep_stn, arr_stn],
+        )
+
+        return [
+            self.parse_dict_to_train_notification_schedule(result) for result in results
+        ]
+
+    @profileit(template="Queried DB for all journeys with station {2} in {_time}")
+    def get_train_reports_by_station(self, universe: str, station: str):
+        results = self.query(
+            """
+            SELECT * FROM notification_schedules
+            WHERE universe = %s
+                AND (
+                    departure_station IN %s
+                    OR arrival_station IN %s
+                )
+                AND is_deleted = 0
+                AND NOW() < expires_at
+            """,
+            [universe, station, station],
+        )
+
+        return [
+            self.parse_dict_to_train_notification_schedule(result) for result in results
+        ]
+
+    def get_train_reports_id_to_description_map(self, universe: str):
+        results = self.query(
+            """
+            SELECT
+                    notification_schedule_global_id
+                ,   description
+
+            FROM notification_schedules
+            WHERE universe = %s
+                AND is_deleted = 0
+                AND NOW() < expires_at
+            """,
+            [universe],
+        )
+
+        return {
+            item["notification_schedule_global_id"]: item["description"]
+            for item in results
+        }
+
+    def get_train_reports_for_both_stations(
+        self, universe: str, first_station: str, second_station: str
+    ):
+        results = self.query(
+            """
+            SELECT * FROM notification_schedules
+            WHERE universe = %s
+                AND 
+                (
+                    (
+                        departure_station = %s
+                        AND arrival_station = %s
+                    )
+                    OR (
+                        arrival_station = %s
+                        AND departure_station = %s
+                    )
+                )
+                AND is_deleted = 0
+                AND NOW() < expires_at
+            """,
+            [universe, first_station, second_station, first_station, second_station],
+        )
+
+        return [
+            self.parse_dict_to_train_notification_schedule(result) for result in results
+        ]
+
+    def get_train_reports_by_description(self, universe: str, partial_description: str):
+        partial_description_operator = f"%{partial_description}%"
+        results = self.query(
+            """
+            SELECT * FROM notification_schedules
+            WHERE universe = %s
+                AND LOWER(description) LIKE %s
+                AND is_deleted = 0
+                AND NOW() < expires_at
+            """,
+            [universe, partial_description_operator],
         )
 
         return [
