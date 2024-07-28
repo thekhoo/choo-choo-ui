@@ -32,6 +32,8 @@ class HomePage(Page):
         if btn_create_new_journey:
             st.switch_page("pages/create-journey.py")
 
+        self.render_footer()
+
 
 if __name__ == "__main__":
     HomePage().render()
