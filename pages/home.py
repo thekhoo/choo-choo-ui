@@ -32,6 +32,13 @@ class HomePage(Page):
         if btn_create_new_journey:
             st.switch_page("pages/create-journey.py")
 
+        # logout
+        logout_button = st.button(label="Logout", type="primary")
+
+        if logout_button:
+            st.session_state["authenticated"] = False
+            st.switch_page("pages/login.py")
+
         self.render_footer()
 
 
