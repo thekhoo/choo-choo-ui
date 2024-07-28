@@ -1,6 +1,6 @@
 .env
 .venv
-choo_choo_microservice.egg-info
+choo_choo_ui.egg-info
 test.ipynb
 test.py
 dist
