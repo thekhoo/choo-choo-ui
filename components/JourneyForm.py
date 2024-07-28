@@ -63,31 +63,32 @@ def DaySelectionInputField():
                 label="Monday",
                 key=get_journey_form_state_key(JourneyFormFieldKey.MONDAY),
             )
-            use_thu = st.checkbox(
-                label="Thursday",
-                key=get_journey_form_state_key(JourneyFormFieldKey.THURSDAY),
-            )
-            use_sun = st.checkbox(
-                label="Sunday",
-                key=get_journey_form_state_key(JourneyFormFieldKey.SUNDAY),
-            )
-        with mid_col:
             use_tue = st.checkbox(
                 label="Tuesday",
                 key=get_journey_form_state_key(JourneyFormFieldKey.TUESDAY),
+            )
+            use_wed = st.checkbox(
+                label="Wednesday",
+                key=get_journey_form_state_key(JourneyFormFieldKey.WEDNESDAY),
+            )
+
+        with mid_col:
+            use_thu = st.checkbox(
+                label="Thursday",
+                key=get_journey_form_state_key(JourneyFormFieldKey.THURSDAY),
             )
             use_fri = st.checkbox(
                 label="Friday",
                 key=get_journey_form_state_key(JourneyFormFieldKey.FRIDAY),
             )
         with right_col:
-            use_wed = st.checkbox(
-                label="Wednesday",
-                key=get_journey_form_state_key(JourneyFormFieldKey.WEDNESDAY),
-            )
             use_sat = st.checkbox(
                 label="Saturday",
                 key=get_journey_form_state_key(JourneyFormFieldKey.SATURDAY),
+            )
+            use_sun = st.checkbox(
+                label="Sunday",
+                key=get_journey_form_state_key(JourneyFormFieldKey.SUNDAY),
             )
 
 
