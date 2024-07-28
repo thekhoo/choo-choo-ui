@@ -1,6 +1,0 @@
-pyproject.toml
-choo_choo_ui.egg-info/PKG-INFO
-choo_choo_ui.egg-info/SOURCES.txt
-choo_choo_ui.egg-info/dependency_links.txt
-choo_choo_ui.egg-info/requires.txt
-choo_choo_ui.egg-info/top_level.txt
