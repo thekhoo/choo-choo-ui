@@ -1,0 +1,55 @@
+from enum import Enum
+
+
+class NotificationChannel(str, Enum):
+    MS_TEAMS = "ms_teams"
+    TELEGRAM = "telegram"
+
+
+class Station(str, Enum):
+    BATH_SPA = "BTH"
+    BEESTON = "BEE"
+    BICESTER_NORTH = "BCS"
+    BICESTER_VILLAGE = "BIT"
+    BIRMINGHAM_INTERNATIONAL = "BHI"
+    BIRMINGHAM_NEW_STREET = "BHM"
+    BIRMINGHAM_MOOR_STREET = "BMO"
+    BRISTOL_PARKWAY = "BPW"
+    BRISTOL_TEMPLE_MEADS = "BRI"
+    CAMBRIDGE = "CBG"
+    CHELMSFORD = "CHM"
+    DERBY = "DBY"
+    DIDCOT_PARKWAY = "DID"
+    EALING_BROADWAY = "EAL"
+    EDINBURGH_WAVERLY = "EDB"
+    FOUR_OAKS = "FOK"
+    GATWICK_AIRPORT = "GTW"
+    LEICESTER = "LEI"
+    LONDON_EUSTON = "EUS"
+    LONDON_KINGS_CROSS = "KGX"
+    LONDON_LIVERPOOL_STREET = "LST"
+    LONDON_MARYLEBONE = "MYB"
+    LONDON_ST_PANCRAS_TOP_LEVEL = "STP"  # for EMR services
+    LONDON_ST_PANCRAS_LOW_LEVEL = "SPL"  # for Thameslink services
+    LONDON_PADDINGTON = "PAD"
+    LONDON_WATERLOO = "WAT"
+    MAIDENHEAD = "MAI"
+    NOTTINGHAM = "NOT"
+    OXFORD = "OXF"
+    PETERBOROUGH = "PBO"
+    READING = "RDG"
+    SLOUGH = "SLO"
+    STAFFORD = "STA"
+    STANSTED_AIRPORT = "SSD"
+    TAMWORTH_TOP_LEVEL = "TAH"
+    TAMWORTH_LOW_LEVEL = "TAM"
+    TAUNTON = "TAU"
+    TWYFORD = "TWY"
+    WARWICK = "WRW"
+    WARWICK_PARKWAY = "WRP"
+
+
+class TrainStatus(str, Enum):
+    ON_TIME = "On time"
+    DELAYED = "Delayed"
+    CANCELLED = "Cancelled"

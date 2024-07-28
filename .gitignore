@@ -1,0 +1,15 @@
+.env
+.venv
+choo_choo_microservice.egg-info
+test.ipynb
+test.py
+dist
+/build
+.DS_Store
+
+__pycache__
+.pytest_cache
+pytest.log
+
+secrets.toml
+.coverage
