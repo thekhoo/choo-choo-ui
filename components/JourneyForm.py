@@ -97,7 +97,11 @@ def JourneyForm():
     with st.container():
         st.markdown("#### 📖 Journey Information")
 
-        if not get_journey_form_state_value(JourneyFormFieldKey.NOTIFICATION_CHANNEL):
+        if (
+            get_journey_form_state_key(JourneyFormFieldKey.NOTIFICATION_CHANNEL)
+            not in st.session_state
+        ):
+            # set the default to telegram
             set_journey_form_state_value(
                 JourneyFormFieldKey.NOTIFICATION_CHANNEL,
                 NotificationChannel.TELEGRAM.value,
